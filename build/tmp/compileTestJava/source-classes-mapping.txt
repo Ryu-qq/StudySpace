@@ -8,3 +8,5 @@ com/ryu/pt/springboot/web/PostsApiControllerTest.java
  com.ryu.pt.springboot.web.PostsApiControllerTest
 com/ryu/pt/springboot/web/domain/posts/PostsRepositroyTest.java
  com.ryu.pt.springboot.web.domain.posts.PostsRepositroyTest
+com/ryu/pt/springboot/web/dto/IndexControllerTest.java
+ com.ryu.pt.springboot.web.dto.IndexControllerTest

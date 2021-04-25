@@ -1,8 +1,9 @@
 package com.ryu.pt.springboot.web.dto;
 
 import com.ryu.pt.springboot.domain.posts.Posts;
+import lombok.Getter;
 
-
+@Getter
 public class PostsResponseDto {
 
     private Long id;
