@@ -5,9 +5,8 @@ com/ryu/pt/springboot/domain/posts/Posts.java
  com.ryu.pt.springboot.domain.posts.Posts$PostsBuilder
 com/ryu/pt/springboot/Application.java
  com.ryu.pt.springboot.Application
-com/ryu/pt/springboot/config/auth/dto/OAuthAttributes.java
- com.ryu.pt.springboot.config.auth.dto.OAuthAttributes
- com.ryu.pt.springboot.config.auth.dto.OAuthAttributes$OAuthAttributesBuilder
+com/ryu/pt/springboot/domain/user/UserRepository.java
+ com.ryu.pt.springboot.domain.user.UserRepository
 com/ryu/pt/springboot/web/PostApiController.java
  com.ryu.pt.springboot.web.PostApiController
 com/ryu/pt/springboot/web/dto/HelloResponseDto.java
@@ -35,11 +34,18 @@ com/ryu/pt/springboot/web/HelloController.java
  com.ryu.pt.springboot.web.HelloController
 com/ryu/pt/springboot/domain/user/Role.java
  com.ryu.pt.springboot.domain.user.Role
-com/ryu/pt/springboot/config/auth/CustomOAuth2UserService.java
- com.ryu.pt.springboot.config.auth.CustomOAuth2UserService
 com/ryu/pt/springboot/domain/posts/PostsRepository.java
  com.ryu.pt.springboot.domain.posts.PostsRepository
-com/ryu/pt/springboot/domain/user/UserRepository.java
- com.ryu.pt.springboot.domain.user.UserRepository
-com/ryu/pt/springboot/web/dto/IndexController.java
- com.ryu.pt.springboot.web.dto.IndexController
+com/ryu/pt/springboot/config/WebConfig.java
+ com.ryu.pt.springboot.config.WebConfig
+com/ryu/pt/springboot/web/IndexController.java
+ com.ryu.pt.springboot.web.IndexController
+com/ryu/pt/springboot/config/auth/dto/OAuthAttributes.java
+ com.ryu.pt.springboot.config.auth.dto.OAuthAttributes
+ com.ryu.pt.springboot.config.auth.dto.OAuthAttributes$OAuthAttributesBuilder
+com/ryu/pt/springboot/config/auth/LoginUserArgumentResolver.java
+ com.ryu.pt.springboot.config.auth.LoginUserArgumentResolver
+com/ryu/pt/springboot/config/auth/CustomOAuth2UserService.java
+ com.ryu.pt.springboot.config.auth.CustomOAuth2UserService
+com/ryu/pt/springboot/config/auth/LoginUser.java
+ com.ryu.pt.springboot.config.auth.LoginUser

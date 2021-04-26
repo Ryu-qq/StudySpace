@@ -1,8 +1,10 @@
-package com.ryu.pt.springboot.web.dto;
+package com.ryu.pt.springboot.web;
 
 
+import com.ryu.pt.springboot.config.auth.LoginUser;
 import com.ryu.pt.springboot.config.auth.dto.SessionUser;
 import com.ryu.pt.springboot.service.PostsService;
+import com.ryu.pt.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +22,10 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null){
-            model.addAttribute("username", user.getName());
+            model.addAttribute("userName", user.getName());
         }
         return "index";
     }
