@@ -3,8 +3,8 @@ com/ryu/pt/springboot/web/dto/PostsResponseDto.java
 com/ryu/pt/springboot/domain/posts/Posts.java
  com.ryu.pt.springboot.domain.posts.Posts
  com.ryu.pt.springboot.domain.posts.Posts$PostsBuilder
-com/ryu/pt/springboot/Application.java
- com.ryu.pt.springboot.Application
+com/ryu/pt/springboot/config/auth/LoginUser.java
+ com.ryu.pt.springboot.config.auth.LoginUser
 com/ryu/pt/springboot/domain/user/UserRepository.java
  com.ryu.pt.springboot.domain.user.UserRepository
 com/ryu/pt/springboot/web/PostApiController.java
@@ -47,5 +47,7 @@ com/ryu/pt/springboot/config/auth/LoginUserArgumentResolver.java
  com.ryu.pt.springboot.config.auth.LoginUserArgumentResolver
 com/ryu/pt/springboot/config/auth/CustomOAuth2UserService.java
  com.ryu.pt.springboot.config.auth.CustomOAuth2UserService
-com/ryu/pt/springboot/config/auth/LoginUser.java
- com.ryu.pt.springboot.config.auth.LoginUser
+com/ryu/pt/springboot/Application.java
+ com.ryu.pt.springboot.Application
+com/ryu/pt/springboot/config/JavaConfig.java
+ com.ryu.pt.springboot.config.JavaConfig
