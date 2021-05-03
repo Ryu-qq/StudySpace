@@ -15,7 +15,7 @@ on:
   
 env:
   S3_BUCKET_NAME: comryu-springboot-build
-  PROJECT_NAME: com.ryu.pt.springboot
+  PROJECT_NAME: com.ryu.pt
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -63,6 +63,6 @@ jobs:
         
         
       - name: Code Deploy 
-        run: aws deploy create-deployment --application-name webboard-service-deploy --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name develop --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
+        run: aws deploy create-deployment --application-name web-board-service --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name develop --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$PROJECT_NAME/$GITHUB_SHA.zip
 
 
