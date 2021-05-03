@@ -1,25 +1,19 @@
-#!/bin/bash
-CURRENT_PORT=$(cat /home/ec2-user/service_url.inc | grep -Po '[0-9]+' | tail -1)
-TARGET_PORT=0
+#!/usr/bin/env bash
 
-echo "> Current port of running WAS is ${CURRENT_PORT}."
+ABSPATH=$(readlink -f $0)
+ABSDIR=$(dirname $ABSPATH)
+source ${ABSDIR}/profile.sh
 
-if [ ${CURRENT_PORT} -eq 8081 ]; then
-  TARGET_PORT=8082
-elif [ ${CURRENT_PORT} -eq 8082 ]; then
-  TARGET_PORT=8081
-else echo "> No WAS is connected to nginx"
+IDLE_PORT=$(find_idle_port)
+
+echo "> $IDLE_PORT 에서 구동중인 애플리케이션 pid 확인"
+IDLE_PID=$(lsof -ti tcp:${IDLE_PORT})
+
+if [ -z ${IDLE_PID} ]
+then
+  echo "> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다."
+else
+  echo "> kill -15 $IDLE_PID"
+  kill -15 ${IDLE_PID}
+  sleep 5
 fi
-
-TARGET_PID=$(lsof -Fp -i TCP:${TARGET_PORT} | grep -Po 'p[0-9]+' | grep -Po '[0-9]+')
-
-
-if [ ! -z ${TARGET_PID} ]; then
-
-  echo "> Kill WAS running at ${TARGET_PORT}."
-  sudo kill ${TARGET_PID}
-fi
-
-nohup java -jar -Dserver.port=${TARGET_PORT} /home/ec2-user/app/step2/zip/build/libs/* > /home/ec2-user/nohup.out 2>&1 &
-echo "> Now new WAS runs at ${TARGET_PORT}." exit 0
-
