@@ -51,3 +51,5 @@ com/ryu/pt/springboot/Application.java
  com.ryu.pt.springboot.Application
 com/ryu/pt/springboot/config/JavaConfig.java
  com.ryu.pt.springboot.config.JavaConfig
+com/ryu/pt/springboot/web/ProfileController.java
+ com.ryu.pt.springboot.web.ProfileController
