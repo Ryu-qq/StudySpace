@@ -29,11 +29,11 @@ do
 
   if [ ${RETRY_COUNT} -eq 10 ]
   then
-    echo "> Health check 실패 왜!. "
+    echo "> Health check 실패.. "
     echo "> 엔진엑스에 연결하지 않고 배포를 종료합니다."
     exit 1
   fi
 
-  echo "> Health check 연결 실패. 재시도..."
+  echo "> Health check 연결 실패. 재시도... 와이~"
   sleep 10
 done
