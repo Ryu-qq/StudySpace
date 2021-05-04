@@ -21,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
+//WebMvcTest Controller, ControllerAdvice등을 사용가능 but Service, Component, Repository에 대해선 사용 불가
 @WebMvcTest(controllers = HelloController.class,
         excludeFilters = {
                 @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
@@ -28,6 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 )
 public class HelloControllerTest {
 
+    //스프링이 사용하는 빈 주입
     @Autowired
     private MockMvc mvc; //웹 API테스트할 때 사용
 

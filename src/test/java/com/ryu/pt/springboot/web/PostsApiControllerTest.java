@@ -61,6 +61,7 @@ public class PostsApiControllerTest {
         postsRepository.deleteAll();
     }
 
+    //role에 권한 추가 -> ROLE_USER인샘 , 인증된 모의 사용자
     @Test
     @WithMockUser(roles="USER")
     public void Posts_등록된다() throws Exception {
