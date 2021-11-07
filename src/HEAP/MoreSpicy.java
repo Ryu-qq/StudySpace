@@ -45,22 +45,3 @@ public class MoreSpicy {
 
 
 }
-
-/*
-처음 생각한거
-
-ArrayList<Integer> list = new ArrayList<>();
-        for(int i=0; i<=scoville.length; i++){
-            list.add(scoville[i]);
-        }
-
-        Collections.sort(list, Collections.reverseOrder());
-
-
-        int cnt;
-
-        while(list.get(0)<K){
-            int i = list.get(0) + (list.get(1) *2);
-
-
-}*/
