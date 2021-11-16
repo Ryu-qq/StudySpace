@@ -40,8 +40,6 @@ public class 매출액의종류 {
         for(int x: solution(n, m, arr)){
             System.out.println(x);
         }
-
-
     }
 
     public static ArrayList<Integer> solution(int n, int m, int[] arr){
