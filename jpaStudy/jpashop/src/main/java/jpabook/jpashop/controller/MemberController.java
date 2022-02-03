@@ -11,6 +11,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
@@ -24,7 +27,7 @@ public class MemberController {
     }
 
     @PostMapping("/members/new")
-    public String create(@Validated MemberForm memberForm, BindingResult result){
+    public String create(@Valid MemberForm memberForm, BindingResult result){
 
         if(result.hasErrors()){
             return "members/createMemberForm";
@@ -33,10 +36,20 @@ public class MemberController {
         Address address = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
         Member member = new Member();
         member.setName(memberForm.getName());
-        member.setAddress(member.getAddress());
+        member.setAddress(address);
 
         memberSerivce.join(member);
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model){
+        List<Member> members = memberSerivce.findMembers();
+        model.addAttribute("members", members);
+
+        return "members/memberList";
 
     }
+
+
 }

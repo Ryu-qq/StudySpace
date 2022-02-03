@@ -1,5 +1,6 @@
 package jpabook.jpashop.service;
 
+import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +15,22 @@ import java.util.List;
 public class ItemService {
     private final ItemRepository itemRepository;
 
+
+
     @Transactional
     public void saveItem(Item item){
         itemRepository.save(item);
+    }
+
+
+    //더티체킹(변경감지) 정석적 방법
+    //set도 좀 그렇고 의미있는 메소드로 해보자
+    @Transactional
+    public void updateItem(Long itemId, Book bookParam){
+        Item findItem = itemRepository.findOne(itemId);
+        findItem.setPrice(bookParam.getPrice());
+        findItem.setName(bookParam.getName());
+        findItem.setStockQuantity(bookParam.getStockQuantity());
     }
 
     public List<Item> findItems(){
