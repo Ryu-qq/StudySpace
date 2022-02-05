@@ -1,4 +1,7 @@
 package study.datajpa.repository;
 
-public class TeamRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import study.datajpa.entity.Team;
+
+public interface TeamRepository extends JpaRepository<Team, Long> {
 }
