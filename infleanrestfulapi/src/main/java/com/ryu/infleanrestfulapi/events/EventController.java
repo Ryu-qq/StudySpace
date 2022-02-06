@@ -1,6 +1,7 @@
 package com.ryu.infleanrestfulapi.events;
 
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +21,20 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class EventController {
 
     private final EventRepository eventRepository;
+    private final ModelMapper modelMapper;
 
     @PostMapping
-    public ResponseEntity createEvent(@RequestBody Event event){
+    public ResponseEntity createEvent(@RequestBody EventDto eventDto){
 
-        Event newEvent = eventRepository.save(event);
+        //원래대로라면 옮겨야함 이런식으로
+//        Event event = Event.builder()
+//                .name(eventDto.getName())
+//                .build()
 
+        Event event = modelMapper.map(eventDto, Event.class);
+
+        Event newEvent = this.eventRepository.save(event);
         URI createdUri = linkTo(EventController.class).slash(newEvent.getId()).toUri();
-        event.setId(10);
         return ResponseEntity.created(createdUri).body(event);
     }
 }

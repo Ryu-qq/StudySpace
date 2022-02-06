@@ -20,9 +20,9 @@ class EventTest {
 
         Event event = new Event();
         event.setName(name);
-        event.setDescraiption(description);
+        event.setDescription(description);
 
         Assertions.assertThat(event.getName()).isEqualTo(name);
-        Assertions.assertThat(event.getDescraiption()).isEqualTo(description);
+        Assertions.assertThat(event.getDescription()).isEqualTo(description);
     }
 }
