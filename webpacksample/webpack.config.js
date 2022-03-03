@@ -1,4 +1,5 @@
 const path = require('path');
+const MyWebpackPlugin = require('./my-webpack-plugin');
 
 module.exports ={
     mode:'development',
@@ -7,7 +8,7 @@ module.exports ={
 
     },
     output:{
-        path: path.resolve('./dist/main.js'),
+        path: path.resolve('./dist/'),
         filename: '[name].js'
     },
     module:{
@@ -20,13 +21,17 @@ module.exports ={
                 ]
             },
             {   //확장자 를 가진 확장자는 모두 로더로 돌리겠다
-                test: /\.png$/,
-                loader: 'file-loader',
+                test: /\.(png|jpg|gif|svg$)/,
+                loader: 'url-loader',
                 options:{
-                    publicPath: './dist/main.js',
-                    name: '[name].[ext]?[hash]'
+                    publicPath: './dist/',
+                    name: '[name].[ext]?[hash]',
+                    limit: 20000, //2kb
                 },
             }
         ]
-    }
+    },
+    plugins:[
+        new MyWebpackPlugin(),
+    ]
 }
