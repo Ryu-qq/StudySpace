@@ -111,9 +111,6 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom{
     }
 
 
-
-
-
     private BooleanExpression ageLoe(Integer ageLoe) {
         return ageLoe !=null ? member.age.eq(ageLoe) : null;
     }
