@@ -16,19 +16,23 @@ public class AppSpringConfig {
 
     @Bean
     public MemberRepository getMemberRepository() {
+
         return new MemoryMemberRepositoryImpl();
     }
     @Bean
     public DiscountPolicy getDiscountPolicy(){
+
         return new FixDiscountPolicy();
     }
     @Bean
     public MemberService memberService(){
+
         return new MemberServiceImpl(getMemberRepository());
     }
 
     @Bean
     public OrderService orderService(){
+
         return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy() );
     }
 

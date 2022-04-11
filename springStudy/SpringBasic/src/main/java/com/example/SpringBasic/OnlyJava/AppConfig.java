@@ -8,23 +8,26 @@ import com.example.SpringBasic.OnlyJava.member.MemberService;
 import com.example.SpringBasic.OnlyJava.member.MemberServiceImpl;
 import com.example.SpringBasic.OnlyJava.order.OrderService;
 import com.example.SpringBasic.OnlyJava.order.OrderServiceImpl;
+import org.springframework.context.annotation.Bean;
 
 public class AppConfig {
 
-
+    @Bean
     private MemberRepository getMemberRepository() {
+
         return new MemoryMemberRepositoryImpl();
     }
+    @Bean
+    private DiscountPolicy getDiscountPolicy(){
 
-    public DiscountPolicy getDiscountPolicy(){
         return new FixDiscountPolicy();
     }
-
+    @Bean
     public MemberService memberService(){
         return new MemberServiceImpl(getMemberRepository());
     }
 
-
+    @Bean
     public OrderService orderService(){
         return new OrderServiceImpl(getMemberRepository(), getDiscountPolicy() );
     }
