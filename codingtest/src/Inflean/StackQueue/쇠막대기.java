@@ -1,6 +1,7 @@
 package Inflean.StackQueue;
 
 import java.util.Scanner;
+import java.util.Stack;
 
 /***
  * 설명
@@ -42,8 +43,21 @@ public class 쇠막대기 {
 
     public static int solution(String c){
         int answer=0;
+        Stack<Character> st = new Stack<>();
 
+        for(int i=0; i<c.length(); i++){
+            if(c.charAt(i) == '(') st.push('(');
+            else{
+                if(c.charAt(i-1) == ')'){
+                    st.pop();
+                    answer ++;
+                }else{
+                    st.pop();
+                    answer += st.size();
 
+                }
+            }
+        }
         return answer;
     }
 
