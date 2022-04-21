@@ -17,12 +17,12 @@ import org.springframework.web.server.ResponseStatusException;
 public class ApiExceptionController {
 
     @GetMapping("/api/members/{id}")
-    public MemberDto getMember(@PathVariable("id") String id) throws IllegalAccessException {
+    public MemberDto getMember(@PathVariable("id") String id) throws IllegalArgumentException {
         if(id.equals("ex")){
             throw new RuntimeException("잘못된 사용자");
         }
         if(id.equals("bad")){
-            throw new IllegalAccessException("잘못된 입력값");
+            throw new IllegalArgumentException("잘못된 입력값");
         }
         if(id.equals("user-ex")){
             throw new UserException("사용자 오류");
@@ -38,7 +38,7 @@ public class ApiExceptionController {
 
     @GetMapping("/api/response-status-ex2")
     public String responseEx2(){
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"error-bad", new IllegalAccessException());
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"error.bad", new IllegalAccessException());
     }
 
     @GetMapping("/api/defalut-handler-ex")

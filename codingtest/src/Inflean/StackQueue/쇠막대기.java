@@ -45,10 +45,10 @@ public class 쇠막대기 {
         int answer=0;
         Stack<Character> st = new Stack<>();
 
-        for(int i=0; i<c.length(); i++){
-            if(c.charAt(i) == '(') st.push('(');
+        for(char x : c.toCharArray()){
+            if(x == '(') st.push('(');
             else{
-                if(c.charAt(i-1) == ')'){
+                if(st.peek() == ')'){
                     st.pop();
                     answer ++;
                 }else{
