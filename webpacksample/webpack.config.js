@@ -15,6 +15,29 @@ module.exports ={
         path: path.resolve('./dist/'),
         filename: '[name].js'
     },
+    devServer:{
+        overlay: true,
+        stats: "errors-only",
+        onBeforeSetupMiddleware: app => {
+            app.get("/api/users", (req, res) =>{
+                res.json([
+                    {
+                        id:1,
+                        name: "Alice"
+                    },
+                    {
+                        id:2,
+                        name: "R"
+                    },
+                    {
+                        id:3,
+                        name: "S"
+                    },
+
+                ]);
+            });
+        }
+    },
     module:{
         rules: [
             {   
