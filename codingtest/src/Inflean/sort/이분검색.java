@@ -1,8 +1,6 @@
 package Inflean.sort;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class 이분검색 {
@@ -20,6 +18,26 @@ public class 이분검색 {
 
         Arrays.sort(arr);
 
-        System.out.println();
+        System.out.println(solution(n,m,arr));
+    }
+
+    public static int solution(int n, int m, int[] arr){
+        int answer = 0;
+        int lt=0, rt=n-1;
+
+        while(lt <=rt){
+            int mi = (lt+rt) / 2;
+            if(arr[mi] == m){
+                answer = mi+1;
+                break;
+            }
+
+            if(arr[mi] >m) rt = mi-1;
+            else lt = mi+1;
+
+        }
+
+        return answer;
+
     }
 }
