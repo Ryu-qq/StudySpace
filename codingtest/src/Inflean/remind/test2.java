@@ -28,11 +28,10 @@ public class test2 {
             }else{
                 answer[i] = num;
             }
-
         }
 
         for(int x: answer){
-            System.out.println(x);
+            System.out.print(x + " ");
         }
 
     }

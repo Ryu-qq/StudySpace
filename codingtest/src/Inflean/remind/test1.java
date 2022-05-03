@@ -22,7 +22,6 @@ public class test1 {
 
     public static int solutionA(int A){
         int answer = 0;
-        int number = A/10;
         if(A>= 1000) answer = 1;
         else if(A<1000 && A>=100) answer =4;
         else if(A<100) answer =7;

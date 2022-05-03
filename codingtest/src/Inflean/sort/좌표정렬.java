@@ -22,26 +22,28 @@ public class 좌표정렬 {
 
     }
 
+    public  static class  Point implements Comparable<Point> {
+
+        public int x, y;
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        //자기 자신에서 불러온 객체를 빼면 오름차순
+        @Override
+        public int compareTo(Point o) {
+            if (this.x == o.x) return this.y - o.y;
+            else return this.x -o.x;
+        }
+
+    }
+
 
 
 
 }
 
-class Point implements Comparable<Point> {
 
-    public int x, y;
-
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    //자기 자신에서 불러온 객체를 빼면 오름차순
-    @Override
-    public int compareTo(Point o) {
-        if (this.x == o.x) return this.y - o.y;
-        else return this.x -o.x;
-    }
-
-}
 
