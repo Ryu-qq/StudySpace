@@ -23,23 +23,34 @@ import java.util.Scanner;
  */
 public class 동전교환 {
     static int answer = Integer.MAX_VALUE;
+    static int[] dy;
     static int n, m;
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         n = in.nextInt();
-        Integer[] arr = new Integer[n];
+        int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
             arr[i] = in.nextInt();
         }
 
         m = in.nextInt();
+        dy = new int[m+1];
 
-        Arrays.sort(arr, Comparator.reverseOrder());
+        System.out.println(solution(arr));
 
-        System.out.println(answer);
+    }
+    public static int solution(int[] arr){
+        Arrays.fill(dy, Integer.MAX_VALUE);
+        dy[0] = 0;
+        for(int i=0; i<n; i++){
+            for(int j=arr[i]; j<=m; j++){
+                dy[j] = Math.min(dy[j], dy[j-arr[i]] +1);
+            }
+        }
 
+        return dy[m];
     }
 
 }
