@@ -25,12 +25,7 @@ public class 디스크컨트롤러 {
     public static int solution(int[][] jobs) {
 
         PriorityQueue<Job> run = new PriorityQueue<>((o1, o2) -> o1.start - o2.start);
-
         PriorityQueue<Job> wait = new PriorityQueue<>((o1, o2) -> o1.end - o2.end);
-
-
-
-
 
         for(int i=0; i< jobs.length; i++){
             run.offer(new Job(jobs[i][0], jobs[i][1]));
