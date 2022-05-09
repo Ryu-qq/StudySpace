@@ -1,9 +1,9 @@
 package programmers.Greedy;
 
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class 소수찾기 {
-    static int answer =0;
 
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
@@ -11,48 +11,46 @@ public class 소수찾기 {
         solution(s);
     }
 
-    static int[] ch, arr, dx;
+    static int[] ch;
+    static int answer;
+    static TreeSet<Integer> set;
     public static int solution(String numbers) {
 
-        arr = new int[numbers.length()];
         ch = new int[numbers.length()];
-        dx = new int[9999999];
+        set = new TreeSet<>();
 
-        for(int i=0; i<numbers.length(); i++){
-            arr[i] = Integer.parseInt(String.valueOf(numbers.charAt(i)));
+        DFS(0, "", numbers);
+
+        for(int i : set){
+            if(isPrime(i)) answer++;
         }
 
-        DFS(0, "");
-        System.out.println(answer);
         return answer;
     }
 
-    public static void DFS(int Lv, String sum){
-        if(Lv == ch.length &&!sum.equals("")){
-            int i = Integer.parseInt(sum);
-            if(dx[i] >0) return;
-            else{
-                dx[i] = i;
-                if(isPrime(i)) answer++;
-            }
+
+    public static void DFS(int Lv, String s, String numbers){
+        if(Lv == numbers.length()){
+            set.add(Integer.parseInt(s));
+            System.out.println(s);
         }else{
-            for(int i=0; i<ch.length; i++){
-                if(ch[i] ==0){
-                    ch[i] =1;
-                    DFS(Lv+1, sum +arr[i]);
-                    DFS(Lv+1, sum);
-                    ch[i] =0;
+            for(int i=0; i<numbers.length(); i++){
+                if(ch[i] ==1) DFS(Lv+1, s, numbers);
+                else {
+                    ch[i] = 1;
+                    DFS(Lv + 1, s + numbers.charAt(i), numbers);
+                    ch[i] = 0;
                 }
+
             }
         }
     }
-
 
 
     public static boolean isPrime(int n){
         if(n ==1 || n ==0) return false;
         for(int i=2; i<n; i++){
-            if(n%2 ==0) return false;
+            if(n%i ==0) return false;
         }
         return true;
     }
