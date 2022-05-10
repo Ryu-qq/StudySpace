@@ -27,7 +27,7 @@ public class PostRequestDto {
 
         return Post.builder()
                 .title(requestDto.getTitle())
-                .contents(requestDto.getTitle())
+                .contents(requestDto.getContents())
                 .useYn("Y")
                 .user(user)
                 .build();
