@@ -51,7 +51,7 @@ public class InitDb {
             Post post6 = createPost("집 올려요", "용산구 월세 8000/100에 올려요","Y", lessor1);
 
             Post post7 = createPost("집 문의해요", "용산구 월세 5000/50 집 볼 수 있나요?","Y", user1);
-            Post post8 = createPost("집 문의해요", "마포구 월세 3000/70 집 볼 수 있나요?","Y", user2);
+            Post post8 = createPost("집 문의해요", "마포구 월세 3000/70 집 볼 수 있나요?","N", user2);
             Post post9 = createPost("집 문의해요", "용산구 월세 8000/100 집 볼 수 있나요?","Y", user1);
             Post post10 = createPost("집 문의해요", "용산구 월세 8000/100 집 볼 수 있나요?","Y", user3);
 

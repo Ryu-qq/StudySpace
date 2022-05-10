@@ -6,23 +6,21 @@ import mission.demo.domain.Post;
 import mission.demo.domain.User;
 import org.apache.catalina.Store;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 @Data
 @NoArgsConstructor
 public class PostRequestDto {
 
+    @Size(min =1 , max = 15, message = "가게 글자 수는 최소 1자 이상,  최대 15자 이내입니다.")
     private String title;
+    @Size(min =1 , max = 15, message = "본문 내용은 1자 이상,  최대 15자 이내입니다.")
     private String contents;
-    private String account_id;
 
     public PostRequestDto(String title, String contents) {
         this.title = title;
         this.contents = contents;
-    }
-
-    public PostRequestDto(String title, String contents, String account_id) {
-        this.title = title;
-        this.contents = contents;
-        this.account_id = account_id;
     }
 
     public Post toEntity(PostRequestDto requestDto, User user){

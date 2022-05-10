@@ -19,4 +19,8 @@ public class ApiResponse<T> {
         return new ApiResponse(map);
     }
 
+    public static <T> ApiResponse<T> fail() {
+        return new ApiResponse(null);
+    }
+
 }

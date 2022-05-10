@@ -24,7 +24,6 @@ public class User {
 
     private String nickname;
 
-    @Column(name = "account")
     private String account_id;
 
     private boolean quit;
@@ -47,4 +46,11 @@ public class User {
         this.quit = quit;
         this.account_type = account_type;
     }
+
+    public User(String nickname, AccountType account_type){
+        this.nickname =nickname;
+        this.account_type =account_type;
+    }
+
+
 }

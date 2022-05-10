@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mission.demo.domain.AccountType;
+import mission.demo.domain.Likes;
+import mission.demo.domain.Post;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,17 +25,21 @@ public class PostResponseDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private Long count;
+    private List<LikeResponseDto> likesList;
 
 
-    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, String accountType, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long count) {
         this.id = id;
         this.title = title;
         this.contents = contents;
         this.nickname = nickname;
-        this.accountType = accountType;
-        this.account_type = account_type;
+        this.accountType = account_type.getTitle();
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
+        this.count = count;
     }
+
+
+
 
 }

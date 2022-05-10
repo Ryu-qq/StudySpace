@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Likes {
+public class Likes extends Time{
 
     @Id
     @GeneratedValue
