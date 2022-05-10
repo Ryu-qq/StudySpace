@@ -17,12 +17,4 @@ public enum AccountType {
     private final String key;
     private final String title;
 
-    public static AccountType of(String code) {
-        return  Arrays.stream(AccountType.values())
-                .filter(t -> t.getKey().equals(code))
-                .findAny()
-                .orElse(GUEST);
-
-        //return accountType.getKey();
-    }
 }

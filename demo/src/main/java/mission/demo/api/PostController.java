@@ -26,6 +26,7 @@ public class PostController {
      * 게시물 전체 조회
      * @return PostResponseDto 리스트 반환
      */
+
     @GetMapping
     public ApiResponse<List<PostResponseDto>> findAllPost(@LoginUser SessionUser user){
         return ApiResponse.success("post-list", postService.findPostAll(user.getId()));
@@ -84,6 +85,7 @@ public class PostController {
      * @param postId 좋아요 또는 좋아요 취소 할 게시물 아이디
      * @param user 로그인한 사용자의 정보
      */
+
     @PostMapping("/{postId}/likes")
     public ApiResponse<Long> likes(@PathVariable Long postId, @LoginUser SessionUser user){
         return ApiResponse.success("post-like",  likeService.checkLikeStatus(postId, user.getId()));

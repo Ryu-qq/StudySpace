@@ -22,12 +22,12 @@ public class PostResponseDto {
     private AccountType account_type;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
-    private Long count;
+    private Long likeCount;
     private List<LikeListResponseDto> likeStatue;
     private List<LikeResponseDto> likeWho;
 
 
-    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long count) {
+    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long likeCount) {
         this.id = id;
         this.title = title;
         this.contents = contents;
@@ -35,10 +35,10 @@ public class PostResponseDto {
         this.accountType = account_type.getTitle();
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-        this.count = count;
+        this.likeCount = likeCount;
     }
 
-    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long count, List<LikeListResponseDto> likeStatue) {
+    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long likeCount, List<LikeListResponseDto> likeStatue) {
         this.id = id;
         this.title = title;
         this.contents = contents;
@@ -46,7 +46,7 @@ public class PostResponseDto {
         this.accountType = account_type.getTitle();
         this.createdDate = createdDate;
         this.modifiedDate = modifiedDate;
-        this.count = count;
+        this.likeCount = likeCount;
         this.likeStatue = likeStatue;
     }
 
