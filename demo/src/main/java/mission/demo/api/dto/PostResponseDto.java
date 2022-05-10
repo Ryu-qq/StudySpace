@@ -2,11 +2,9 @@ package mission.demo.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import mission.demo.domain.AccountType;
-import mission.demo.domain.Likes;
-import mission.demo.domain.Post;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,7 +23,8 @@ public class PostResponseDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private Long count;
-    private List<LikeResponseDto> likesList;
+    private List<LikeListResponseDto> likeStatue;
+    private List<LikeResponseDto> likeWho;
 
 
     public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long count) {
@@ -39,7 +38,17 @@ public class PostResponseDto {
         this.count = count;
     }
 
-
+    public PostResponseDto(Long id, String title, String contents, String nickname, AccountType account_type, LocalDateTime createdDate, LocalDateTime modifiedDate, Long count, List<LikeListResponseDto> likeStatue) {
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+        this.nickname = nickname;
+        this.accountType = account_type.getTitle();
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.count = count;
+        this.likeStatue = likeStatue;
+    }
 
 
 }

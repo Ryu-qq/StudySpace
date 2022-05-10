@@ -1,9 +1,11 @@
 package mission.demo.service;
 
 import lombok.RequiredArgsConstructor;
+import mission.demo.api.dto.LikeListResponseDto;
 import mission.demo.api.dto.LikeResponseDto;
 import mission.demo.api.dto.PostRequestDto;
 import mission.demo.api.dto.PostResponseDto;
+import mission.demo.domain.Likes;
 import mission.demo.domain.Post;
 import mission.demo.domain.User;
 import mission.demo.domain.repository.LikeRepository;
@@ -12,6 +14,8 @@ import mission.demo.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -26,10 +30,24 @@ public class PostService {
 
     /**
      * findPostAll로 게시물 전체 가져옴
+     * 로그인 상태일때 좋아요한 게시물 확인 가능
      * @return 전체 게시물 반환
      */
     public List<PostResponseDto> findPostAll(Long userId){
-        return postRepository.findPostAll(userId);
+        List<PostResponseDto> postAll = postRepository.findPostAll();
+
+        if(userId !=null){
+            List<LikeListResponseDto> likesList = likeRepository.findByUserId(userId);
+            if(likesList.size() <=0) return postAll;
+
+            Map<Long, List<LikeListResponseDto>> groupByPost = likesList.stream()
+                    .collect(Collectors.groupingBy(LikeListResponseDto -> LikeListResponseDto.getPostId()));
+
+            postAll.forEach(o -> o.setLikeStatue(groupByPost.get(o.getId())));
+        }
+
+        return postAll;
+
     }
 
     /**
@@ -40,7 +58,7 @@ public class PostService {
         PostResponseDto post = postRepository.findPost(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. 다시 한번 확인해주세요. id=" + postId));
         List<LikeResponseDto> likeList = likeRepository.findByPost(post.getId());
-        post.setLikesList(likeList);
+        post.setLikeWho(likeList);
 
 
         return post;

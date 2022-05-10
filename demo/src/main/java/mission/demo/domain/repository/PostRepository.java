@@ -15,7 +15,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @return 전체 게시물 조회
      */
     @Query("select new mission.demo.api.dto.PostResponseDto(p.id, p.title, p.contents, u.nickname, u.account_type, p.createdDate, p.modifiedDate, count(l.post.id)) from Post p left join p.user u left join p.likes l where p.useYn='Y' and u.quit =false group by p.id")
-    List<PostResponseDto> findPostAll(Long userId);
+    List<PostResponseDto> findPostAll();
 
 
     /**
