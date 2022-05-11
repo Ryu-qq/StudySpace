@@ -52,6 +52,7 @@ public class PostController {
 
     @PostMapping()
     public  ApiResponse<Long> uploadPost(@ModelAttribute @Valid PostRequestDto requestDto, @LoginUser SessionUser user ) throws Exception {
+
         return ApiResponse.success("post-upload", postService.uploadPost(requestDto, user.getId()));
     }
 

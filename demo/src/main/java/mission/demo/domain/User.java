@@ -52,5 +52,10 @@ public class User {
         this.account_type =account_type;
     }
 
+    public void delete(boolean quit){
+        this.quit = quit;
+    }
+
+
 
 }

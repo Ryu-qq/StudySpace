@@ -23,7 +23,7 @@ public class UserPrincipalService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String accountId) throws UsernameNotFoundException {
         String guestName = "GUEST" + UUID.randomUUID();
-        User user = userRepository.findByAccountId(accountId).orElseGet(() -> new User(guestName, AccountType.GUEST));
+        User user = userRepository.findUserByAccountId(accountId).orElseGet(() -> new User(guestName, AccountType.GUEST));
         httpSession.setAttribute("user", new SessionUser(user));
         return new UserPrincipal(user);
 

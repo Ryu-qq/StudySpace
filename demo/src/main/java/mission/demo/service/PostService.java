@@ -37,7 +37,7 @@ public class PostService {
         List<PostResponseDto> postAll = postRepository.findPostAll();
 
         if(userId !=null){
-            List<LikeListResponseDto> likesList = likeRepository.findByUserId(userId);
+            List<LikeListResponseDto> likesList = likeRepository.findLikeByUserId(userId);
             if(likesList.size() <=0) return postAll;
 
             Map<Long, List<LikeListResponseDto>> groupByPost = likesList.stream()
@@ -55,9 +55,9 @@ public class PostService {
      * @return 게시물 정보와 그 게시물을 좋아요 한 사람들 정보
      */
     public PostResponseDto findPost(Long postId){
-        PostResponseDto post = postRepository.findPost(postId)
+        PostResponseDto post = postRepository.findByPostId(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다. 다시 한번 확인해주세요. id=" + postId));
-        List<LikeResponseDto> likeList = likeRepository.findByPost(post.getId());
+        List<LikeResponseDto> likeList = likeRepository.findLikeByPostId(post.getId());
         post.setLikeWho(likeList);
 
 
@@ -74,11 +74,10 @@ public class PostService {
      */
 
     @Transactional
-    public Long uploadPost(PostRequestDto requestDto,Long userId) throws Exception {
+    public Long uploadPost(PostRequestDto requestDto, Long userId) throws Exception {
 
         User user = userRepository.findById(userId).get();
         Post post = requestDto.toEntity(requestDto, user);
-        postRepository.save(post);
 
         return postRepository.save(post).getId();
 

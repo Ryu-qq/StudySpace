@@ -1,5 +1,6 @@
 package mission.demo.domain.repository;
 
+import mission.demo.api.dto.PostRequestDto;
 import mission.demo.api.dto.PostResponseDto;
 import mission.demo.domain.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,7 +24,16 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @param postId
      */
     @Query("select new mission.demo.api.dto.PostResponseDto(p.id, p.title, p.contents, u.nickname, u.account_type, p.createdDate, p.modifiedDate, count(l.post.id)) from Post p left join p.user u left join p.likes l where p.id =:postId and p.useYn='Y' and u.quit =false group by p.id")
-    Optional<PostResponseDto> findPost(@Param("postId") Long postId);
+    Optional<PostResponseDto> findByPostId(@Param("postId") Long postId);
+
+    /**
+     * 테스트 코드를 위한 코드
+     * 유저 아이디로 유저가 작성한 게시물들을 찾는다.
+     * @param userId 유저 아이디
+     * @return 유저가 작성한 게시물들
+     */
+
+    List<Post> findByUserId(Long userId);
 
     /**
      * 삭제와 수정을 위한 조회

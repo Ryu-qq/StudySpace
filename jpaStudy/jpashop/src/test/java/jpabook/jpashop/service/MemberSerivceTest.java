@@ -29,6 +29,8 @@ class MemberSerivceTest {
 
     }
 
+
+
     @Test
     public void 중복_회원_예외() throws Exception{
 
