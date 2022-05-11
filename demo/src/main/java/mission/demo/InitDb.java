@@ -61,7 +61,6 @@ public class InitDb {
             createLikes(post1,user3);
             createLikes(post3,user1);
             createLikes(post2,user2);
-            createLikes(post2,user2);
 
             createLikes(post4,realtor1);
             createLikes(post5,realtor1);

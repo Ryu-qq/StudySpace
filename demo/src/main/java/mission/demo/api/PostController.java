@@ -28,7 +28,7 @@ public class PostController {
      */
 
     @GetMapping
-    public ApiResponse<List<PostResponseDto>> findAllPost(@LoginUser SessionUser user){
+    public ApiResponse<List<PostResponseDto>> findPostAll(@LoginUser SessionUser user){
         return ApiResponse.success("post-list", postService.findPostAll(user.getId()));
     }
 
@@ -38,7 +38,7 @@ public class PostController {
      */
 
     @GetMapping({"/{postId}"})
-    public ApiResponse<PostResponseDto> getPost(@PathVariable Long postId){
+    public ApiResponse<PostResponseDto> findPost(@PathVariable Long postId){
         return ApiResponse.success("post", postService.findPost(postId));
     }
 

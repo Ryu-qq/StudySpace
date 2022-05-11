@@ -60,7 +60,6 @@ public class PostService {
         List<LikeResponseDto> likeList = likeRepository.findLikeByPostId(post.getId());
         post.setLikeWho(likeList);
 
-
         return post;
     }
 
