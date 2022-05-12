@@ -1,4 +1,4 @@
-package mission.demo;
+package mission.demo.util;
 
 
 import lombok.Getter;

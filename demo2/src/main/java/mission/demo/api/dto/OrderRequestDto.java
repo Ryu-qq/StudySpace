@@ -4,15 +4,15 @@ package mission.demo.api.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class OrderRequestDto {
 
-    private Long itemId;
-    private int count;
+    private List<OrderItemRequestDto> items;
 
-    public OrderRequestDto(Long memberId, Long itemId, int count) {
-        this.itemId = itemId;
-        this.count = count;
+    public OrderRequestDto(List<OrderItemRequestDto> items) {
+        this.items = items;
     }
 }

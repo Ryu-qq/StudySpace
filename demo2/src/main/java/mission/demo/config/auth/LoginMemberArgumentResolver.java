@@ -1,4 +1,4 @@
-package mission.demo.api.auth;
+package mission.demo.config.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
@@ -19,9 +19,9 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        boolean isLoginUserAnnotation = parameter.getParameterAnnotation(LoginMember.class) != null;
+        boolean isLoginMemberAnnotation = parameter.getParameterAnnotation(LoginMember.class) != null;
         boolean isMemberClass = SessionMember.class.equals(parameter.getParameterType());
-        return isLoginUserAnnotation && isMemberClass;
+        return isLoginMemberAnnotation && isMemberClass;
     }
 
     @Override

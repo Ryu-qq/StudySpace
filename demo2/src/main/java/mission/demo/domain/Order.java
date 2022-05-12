@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 @Table(name="orders")
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends Time {
 
@@ -48,15 +49,6 @@ public class Order extends Time {
         delivery.setOrder(this);
     }
 
-    @Builder
-    public Order(Long id, Member member, List<OrderItem> orderItems, Delivery delivery, OrderStatus status) {
-        this.id = id;
-        this.member = member;
-        this.orderItems = orderItems;
-        this.delivery = delivery;
-        this.status = status;
-    }
-
 
     //생성 매서드
 
@@ -66,18 +58,16 @@ public class Order extends Time {
      * @param delivery 주문한 배송
      * @param orderItems 주문한 아이템들들     * @return
      */
-    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems ){
+    public static Order createOrder(Member member, Delivery delivery, List<OrderItem> orderItems ){
 
-        Order order = Order.builder()
-                .member(member)
-                .delivery(delivery)
-                .status(OrderStatus.ORDER)
-                .build();
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
 
         for(OrderItem orderItem: orderItems){
             order.addOrderItem(orderItem);
         }
-
+        order.setStatus(OrderStatus.ORDER);
         return order;
     }
 

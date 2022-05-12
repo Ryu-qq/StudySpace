@@ -26,8 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userPrincipalService);
     }
 
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
@@ -40,9 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(customAccessDeniedHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/api/post", "/api/post/**").permitAll()
-                .antMatchers("/api/post/**").hasAnyAuthority(AccountType.LESSEE.getKey(),AccountType.LESSOR.getKey(),AccountType.REALTOR.getKey())
-                .antMatchers("/api/post/**/likes").hasAnyAuthority(AccountType.LESSEE.getKey(),AccountType.LESSOR.getKey(),AccountType.REALTOR.getKey());
+                .antMatchers("/api/orders/**").hasAnyAuthority(AccountType.MEMBER.getKey());
 
         http.addFilterBefore(securityAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 

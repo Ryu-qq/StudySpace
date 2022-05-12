@@ -21,6 +21,11 @@ public class Member {
 
     private String name;
 
+    private String account_id;
+
+    @Enumerated(EnumType.STRING)
+    private AccountType account_type;
+
     @Embedded
     private Address address;
 
@@ -29,9 +34,15 @@ public class Member {
     private List<Order> orders = new ArrayList<>();
 
 
+    public Member(String account_id, AccountType account_type) {
+        this.account_id = account_id;
+        this.account_type = account_type;
+    }
     @Builder
-    public Member(String name, Address address) {
+    public Member(String name, String account_id, AccountType account_type, Address address) {
         this.name = name;
+        this.account_id = account_id;
+        this.account_type = account_type;
         this.address = address;
     }
 }

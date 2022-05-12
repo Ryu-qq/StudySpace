@@ -1,4 +1,4 @@
-package mission.demo.api.auth;
+package mission.demo.config.auth;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

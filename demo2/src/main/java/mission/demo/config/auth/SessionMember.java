@@ -1,4 +1,4 @@
-package mission.demo.api.auth;
+package mission.demo.config.auth;
 
 import lombok.Getter;
 import mission.demo.domain.Member;
