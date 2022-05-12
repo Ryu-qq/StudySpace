@@ -51,10 +51,7 @@ public class OrderController {
      */
 
     @PostMapping()
-    public String createOrder(@LoginMember SessionMember member, HttpServletRequest request, @RequestBody OrderRequestDto requestDto) throws Exception {
-
-        System.out.println(request);
-
+    public String createOrder(@LoginMember SessionMember member, @RequestBody OrderRequestDto requestDto) throws Exception {
         orderService.order(member.getId(), requestDto);
         return "redirect:/orders";
     }

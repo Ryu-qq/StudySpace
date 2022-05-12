@@ -43,7 +43,7 @@ public abstract class Item {
     public void removeStock(int quantity) throws Exception {
         int restStock = this.stockQuantity - quantity;
         if(restStock <0){
-            throw new Exception("상품 재고가 없습니다!");
+            throw new IllegalStateException("상품 재고가 없습니다!");
         }
         this.stockQuantity = restStock;
     }

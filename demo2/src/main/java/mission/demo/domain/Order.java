@@ -3,7 +3,6 @@ package mission.demo.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +55,8 @@ public class Order extends Time {
      * 주문 생성
      * @param member 주문한 회원
      * @param delivery 주문한 배송
-     * @param orderItems 주문한 아이템들들     * @return
+     * @param orderItems 주문한 아이템들들
+     * @return
      */
     public static Order createOrder(Member member, Delivery delivery, List<OrderItem> orderItems ){
 

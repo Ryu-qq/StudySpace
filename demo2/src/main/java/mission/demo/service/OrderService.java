@@ -40,14 +40,14 @@ public class OrderService {
         OrderResponseDto result = orderRepository.findOrderByMemberId(memberId, orderId);
 
         List<Long> orderIds = new ArrayList<>();
-        orderIds.add(result.getOrderid());
+        orderIds.add(result.getOrderId());
 
         List<OrderItemResponseDto> orderItems = orderRepository.findOrderItemByOrderId(orderIds);
 
         Map<Long, List<OrderItemResponseDto>> orderMap = orderItems.stream()
                 .collect(Collectors.groupingBy(OrderItemResponseDto::getOrderId));
 
-        result.setOrderItem(orderMap.get(result.getOrderid()));
+        result.setOrderItem(orderMap.get(result.getOrderId()));
 
         return result;
     }
@@ -63,7 +63,7 @@ public class OrderService {
         List<OrderResponseDto> result = orderRepository.findOrdersByMemberId(memberId);
 
         List<Long> orderIds = result.stream()
-                .map(o -> o.getOrderid())
+                .map(o -> o.getOrderId())
                 .collect(Collectors.toList());
 
         List<OrderItemResponseDto> orderItems = orderRepository.findOrderItemByOrderId(orderIds);
@@ -72,7 +72,7 @@ public class OrderService {
         Map<Long, List<OrderItemResponseDto>> orderMap = orderItems.stream()
                 .collect(Collectors.groupingBy(OrderItemResponseDto::getOrderId));
 
-        result.forEach(o->o.setOrderItem(orderMap.get(o.getOrderid())));
+        result.forEach(o->o.setOrderItem(orderMap.get(o.getOrderId())));
 
         return result;
     }
