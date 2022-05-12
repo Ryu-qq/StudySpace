@@ -4,9 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import mission.demo.domain.Post;
 import mission.demo.domain.User;
-import org.apache.catalina.Store;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data

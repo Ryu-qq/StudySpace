@@ -27,8 +27,6 @@ public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
 
-
-
     @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1(){
         List<Order> all = orderRepository.findAllByCriteria(new OrderSearch());
