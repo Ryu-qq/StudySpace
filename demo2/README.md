@@ -17,3 +17,13 @@ Spring boot 2.6.7, java 8, gradle, JPA, H2
 
 
 
+
+--주문 전체 조회
+
+<img width="794" alt="스크린샷 2022-05-12 오후 5 04 32" src="https://user-images.githubusercontent.com/56243159/168022502-bde66698-8624-4df7-96a4-6ddcd9dcbd52.png">
+  
+  
+  
+  
+--주문 단건 조회
+<img width="798" alt="스크린샷 2022-05-12 오후 5 03 13" src="https://user-images.githubusercontent.com/56243159/168022561-717e8e7f-61e5-4c73-b010-f05dfb5279d9.png">
