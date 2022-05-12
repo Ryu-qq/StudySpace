@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("select new mission.demo.api.dto.OrderResponseDto(o.id, m.name, o.createdDate, o.status, d.address ) from Order o left join o.member m left join o.delivery d where o.member.id =:memberId and o.id =:orderId")
-    OrderResponseDto findOrderByMemberId(@Param("memberId") Long memberId, @Param("orderId") Long orderId);
+    Optional<OrderResponseDto> findOrderByMemberId(@Param("memberId") Long memberId, @Param("orderId") Long orderId);
 
 
     @Query("select new mission.demo.api.dto.OrderResponseDto(o.id, m.name, o.createdDate, o.status, d.address ) from Order o left join o.member m left join o.delivery d where o.member.id =:memberId")

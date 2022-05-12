@@ -37,7 +37,8 @@ public class OrderService {
      */
     public OrderResponseDto findOrder (Long orderId, Long memberId){
 
-        OrderResponseDto result = orderRepository.findOrderByMemberId(memberId, orderId);
+        OrderResponseDto result = orderRepository.findOrderByMemberId(memberId, orderId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 주문이 없습니다. id=" + orderId));
 
         List<Long> orderIds = new ArrayList<>();
         orderIds.add(result.getOrderId());
