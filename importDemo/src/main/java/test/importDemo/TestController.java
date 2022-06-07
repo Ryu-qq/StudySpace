@@ -1,6 +1,7 @@
 package test.importDemo;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -9,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/pay")
 public class TestController {
+
+    private final TestService testService;
 
     @GetMapping
     public String payment(){
@@ -26,6 +30,12 @@ public class TestController {
 
         map.put(imp_uid, requestDto.getImp_uid());
         map.put(merchant_uid, requestDto.getMerchant_uid());
+
+        ResponseDto responseDto = testService.getAccessKey();
+
+        String s = testService.checkValidation(imp_uid, responseDto.getResponse().getAccess_token());
+        System.out.println("s = " + s);
+
 
         return ResponseEntity.ok(map);
     }
