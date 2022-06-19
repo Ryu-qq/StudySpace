@@ -1,0 +1,12 @@
+
+Apple:
+  key-id: 'PLS38L38PA'
+  key-value: 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgugsOgQKuQ3/O95SQob/7POWeHd7BROs2dxYrcXeQnZugCgYIKoZIzj0DAQehRANCAARHFFeGWUNrOGiS7bWFk1pAyt+mTFUKD98zgYIzLpvu8PuQGbzcoWnR3FMbwK2OxbLPWhi+l4eP9TR2PBvCNS45'
+  key-path: 'static/AuthKey_PLS38L38PA.p8'
+  key-teamId: 'MATB3B5A6S'
+  aud: 'connectluxury.connectly.com'
+  iss: 'https://appleid.apple.com'
+  websiteUrl: 'https://73f5-1-213-174-104.jp.ngrok.io/api/v1/apple/redirect'
+  publicKeyUrl: 'https://appleid.apple.com/auth/keys'
+  authTokenUrl: 'https://appleid.apple.com/auth/token'
+
